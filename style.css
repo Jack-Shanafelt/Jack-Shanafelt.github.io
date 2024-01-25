@@ -1,0 +1,18 @@
+#Self{
+    max-width: 25%;
+    height: auto;
+}
+.container{
+    float: left;
+}
+.footer{
+    position: fixed; /* Fixed position at the bottom */
+    bottom: 0; /* Stick to the bottom */
+    width: 100%; /* Full width */
+    background-color: #f1f1f1; /* Background color */
+    text-align: center; /* Center the text */
+    padding: 10px; /* Add padding for better visibility */
+}
+.footer a{
+    margin-right: 75px;
+}
