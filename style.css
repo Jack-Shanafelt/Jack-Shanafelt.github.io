@@ -9,8 +9,9 @@
     height: auto;
 }
 
-.container{
+.container {
     float: left;
+    width: 100%;
 }
 
 
