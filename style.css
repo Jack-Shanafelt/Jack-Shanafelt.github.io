@@ -1,18 +1,48 @@
+.container::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
 #Self{
     max-width: 25%;
     height: auto;
 }
+
 .container{
     float: left;
 }
-.footer{
-    position: fixed; /* Fixed position at the bottom */
-    bottom: 0; /* Stick to the bottom */
-    width: 100%; /* Full width */
-    background-color: #f1f1f1; /* Background color */
-    text-align: center; /* Center the text */
-    padding: 10px; /* Add padding for better visibility */
-}
+
+
 .footer a{
     margin-right: 75px;
+}
+
+#MobileWeb{
+    max-width: 50%;
+    height: auto;
+}
+
+#Wheel{
+    max-width: 50%;
+    height: auto;
+}
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+.content {
+    min-height: 100vh;
+    padding-bottom: 50px; /* Adjust based on the height of your footer */
+    box-sizing: border-box;
+}
+
+.footer {
+    /* height: 50px; Adjust based on the height of your footer */
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    /* padding: 10px; */
 }
