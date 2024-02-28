@@ -9,7 +9,13 @@
     height: auto;
 }
 
+@keyframes fadeIn {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
 .container {
+    animation: fadeIn 2s;
     float: left;
     width: 50%;
 }
@@ -46,4 +52,49 @@ body, html {
     width: 100%;
     text-align: center;
     /* padding: 10px; */
+}
+p{
+    font-family: 'Roboto', sans-serif;
+}
+#home{
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: #f2f2f2;
+    color: black;
+}
+#artifacts{
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: #f2f2f2;
+    color: black;
+}
+.footer a {
+    transition: color 0.5s ease;
+    color: black;
+}
+
+.footer a:hover {
+    color: red;
+}
+.navbar .nav-link {
+    transition: color 0.5s ease;
+    color: black !important;
+}
+
+.navbar .nav-link:hover {
+    color: red !important;
 }
