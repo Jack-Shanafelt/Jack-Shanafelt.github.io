@@ -68,16 +68,93 @@ body {
     background-color: #f8fafc;
 }
 
-/* Section Styles */
-.section-padding {
-    padding: 6rem 0;
+/* About Section Styles */
+.about-image-container {
+    position: relative;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
 }
 
-.section-title {
-    font-size: 2.5rem;
-    font-weight: 700;
+.about-image {
+    width: 100%;
+    height: auto;
+    transform: scale(1);
+    transition: transform 0.5s ease;
+}
+
+.about-image-container:hover .about-image {
+    transform: scale(1.05);
+}
+
+.about-image-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    padding: 2rem 1rem 1rem;
+}
+
+.about-image-overlay span {
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.about-content {
+    padding: 2rem;
+}
+
+.key-points {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.key-point {
     text-align: center;
-    margin-bottom: 3rem;
+    padding: 1rem;
+    background: var(--light-bg);
+    border-radius: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+.key-point:hover {
+    transform: translateY(-5px);
+}
+
+.key-point i {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.key-point span {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.about-cta {
+    margin-top: 2rem;
+}
+
+.lead {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--primary-color);
+}
+
+@media (max-width: 768px) {
+    .key-points {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .about-content {
+        padding: 1rem 0;
+    }
 }
 
 /* Skills Section */
