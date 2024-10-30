@@ -1,69 +1,270 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<html>
-
 <head>
-    <meta name='viewport' content='width=device-width, initial-scale=1' />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdn.jsdelivr.net">
-    <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" as="style" onload="this.rel='stylesheet'">
-    <noscript>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-    </noscript>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" as="script" onload="this.rel='preload'"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous" defer></script>
-    <link rel="preload" href="style.css" as="style" onload="this.rel='stylesheet'">
-    <noscript>
-        <link rel="stylesheet" href="style.css">
-    </noscript>
-    <title>Jack Shanafelt's portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jack Shanafelt - Game & Web Developer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
 </head>
-
-<body id="home">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
             <a class="navbar-brand" href="#">Jack Shanafelt</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="artifacts.html">Artifacts</a>
+                        <a class="nav-link" href="#about">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="Resume.html">My Resume</a>
+                        <a class="nav-link" href="#projects">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills">Skills</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
-    <div class="content">
-        <h1>Jack Shanafelt</h1>
-        <hr>
+
+    <header class="hero-section">
         <div class="container">
-            <img src="Images\IMG_2130.jpg" class="img-fluid" id="Self" alt="Self Photo">
-            <p>I am Jack Shanafelt, a GIMM Major, Aspiring game developer and website developer. The purpose of this
-                website is to act as a portfolio to demonstrate my
-                previous works. I was born in Boise, Idaho, raised in washington for most of my life. But for the last
-                few years before I enrolled in BSU I was travelling the world while living on a boat.</p>
-                <h1>Skills</h1>
-                <p>HTML, CSS, JavaScript, C#, Unity, Maya, Photoshop, Premier Pro, Arduino IDE, Python, D3js, and more.</p>
-                <h1>Education</h1>
-                <p>Boise State University, current student in Games, Interactive Media, and Mobile Technology, associate's degree from Tacoma Community College</p>
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="display-4 fw-bold">Game & Web Developer</h1>
+                    <p class="lead">GIMM Major at Boise State University</p>
+                    <div class="hero-buttons">
+                        <a href="#projects" class="btn btn-primary">View Projects</a>
+                        <a href="#contact" class="btn btn-outline-light">Contact Me</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <img src="Images/IMG_2130.jpg" alt="Jack Shanafelt" class="hero-image">
+                </div>
+            </div>
         </div>
-        <hr>
+    </header>
 
-    </div>
-    <div class="footer">
-        <a href="https://www.linkedin.com/in/jack-shanafelt-772125276/" target="_blank">linkedin</a>
-        <a href="mailto:shanafeltj1@gmail.com">Email me</a>
-    </div>
+    <section id="about" class="section-padding">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="about-content">
+                        <!-- Introduction -->
+                        <p class="lead mb-4">
+                            From navigating the high seas to navigating code, my journey to becoming a developer has been anything but conventional.
+                        </p>
+                        
+                        <!-- Background -->
+                        <div class="about-block mb-4">
+                            <p>
+                                As a GIMM (Games, Interactive Media, and Mobile Technology) major at Boise State University, I blend my worldwide adventures with cutting-edge technology to create immersive digital experiences.
+                            </p>
+                            <p>
+                                Growing up between the Pacific Northwest's tech hub and the rolling waves of international waters, I developed a unique perspective on problem-solving and creativity. Living on a boat while traveling the world wasn't just an adventure – it taught me adaptability, resource management, and how to think outside the box, skills that now power my approach to game development and web solutions.
+                            </p>
+                        </div>
+    
+                        <!-- Technical Skills -->
+                        <div class="about-block mb-4">
+                            <h3 class="sub-heading">My Technical Toolkit</h3>
+                            <ul class="skill-list">
+                                <li>
+                                    <span class="skill-title">Game Development:</span> 
+                                    Crafting interactive experiences in Unity with C#
+                                </li>
+                                <li>
+                                    <span class="skill-title">Web Development:</span> 
+                                    Building responsive, user-centric applications
+                                </li>
+                                <li>
+                                    <span class="skill-title">3D Modeling:</span> 
+                                    Creating detailed assets using Maya
+                                </li>
+                                <li>
+                                    <span class="skill-title">Digital Design:</span> 
+                                    Producing compelling visuals with Adobe Creative Suite
+                                </li>
+                            </ul>
+                        </div>
+    
+                        <!-- Current Focus -->
+                        <div class="about-block mb-4">
+                            <h3 class="sub-heading">Current Focus</h3>
+                            <ul class="focus-list">
+                                <li>Developing innovative game mechanics that challenge players' expectations</li>
+                                <li>Creating interactive web experiences that blend education with entertainment</li>
+                                <li>Exploring the intersection of virtual reality and traditional gaming</li>
+                                <li>Building a bridge between complex scientific concepts and accessible gaming experiences</li>
+                            </ul>
+                        </div>
+    
+                        <!-- Closing Statement -->
+                        <div class="about-block closing-statement">
+                            <p>
+                                Whether I'm coding a new game mechanic or designing an intuitive user interface, I bring the same sense of adventure and discovery that took me across oceans to every project I tackle. I believe that great digital experiences, like great journeys, are about exploring new possibilities and pushing boundaries.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <section id="skills" class="section-padding bg-light">
+        <div class="container">
+            <h2 class="section-title">Skills</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3>Web Development</h3>
+                        <div class="skill-items">
+                            <div class="skill-item">
+                                <span>HTML/CSS</span>
+                                <div class="progress">
+                                    <div class="progress-bar" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span>JavaScript</span>
+                                <div class="progress">
+                                    <div class="progress-bar" style="width: 85%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="fas fa-gamepad"></i>
+                        </div>
+                        <h3>Game Development</h3>
+                        <div class="skill-items">
+                            <div class="skill-item">
+                                <span>Unity</span>
+                                <div class="progress">
+                                    <div class="progress-bar" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span>C#</span>
+                                <div class="progress">
+                                    <div class="progress-bar" style="width: 80%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <h3>Design</h3>
+                        <div class="skill-items">
+                            <div class="skill-item">
+                                <span>Maya</span>
+                                <div class="progress">
+                                    <div class="progress-bar" style="width: 35%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span>Photoshop</span>
+                                <div class="progress">
+                                    <div class="progress-bar" style="width: 60%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="section-padding">
+        <div class="container">
+            <h2 class="section-title">Projects</h2>
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="Images/Screenshot (57).png" alt="Mobile Web Project">
+                        </div>
+                        <div class="project-content">
+                            <h3>Data Visualization Project</h3>
+                            <p>A responsive web application showcasing data visualization techniques with interactive elements.</p>
+                            <div class="project-tags">
+                                <span class="tag">HTML</span>
+                                <span class="tag">CSS</span>
+                                <span class="tag">JavaScript</span>
+                                <span class="tag">D3.js</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="Images/Screenshot (84).png" alt="3D Modeled Wheel">
+                        </div>
+                        <div class="project-content">
+                            <h3>The Allegory of Superposition</h3>
+                            <p>A Unity-based platformer exploring quantum mechanics concepts through innovative gameplay mechanics.</p>
+                            <div class="project-tags">
+                                <span class="tag">Unity</span>
+                                <span class="tag">C#</span>
+                                <span class="tag">3D Modeling</span>
+                            </div>
+                            <a href="https://ciemnywilk.itch.io/the-allegory-of-superposition" class="btn btn-primary mt-3">Play Demo</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section-padding bg-dark text-white">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="row">
+                <div class="col-lg-6 mx-auto text-center">
+                    <p class="mb-4">Interested in working together? Let's connect!</p>
+                    <div class="contact-links">
+                        <a href="https://www.linkedin.com/in/jack-shanafelt-772125276/" class="btn btn-outline-light me-3">
+                            <i class="fab fa-linkedin"></i> LinkedIn
+                        </a>
+                        <a href="mailto:shanafeltj1@gmail.com" class="btn btn-outline-light">
+                            <i class="fas fa-envelope"></i> Email
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p>&copy; 2024 Jack Shanafelt. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
 </body>
-
 </html>
