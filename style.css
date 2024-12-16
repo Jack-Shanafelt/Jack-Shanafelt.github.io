@@ -144,7 +144,7 @@ body {
 .lead {
     font-size: 1.25rem;
     font-weight: 500;
-    color: var(--primary-color);
+    color:#ffa500
 }
 
 @media (max-width: 768px) {
