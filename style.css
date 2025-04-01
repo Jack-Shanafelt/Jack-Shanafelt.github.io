@@ -859,3 +859,563 @@ a:not(.btn):not(.navbar-brand):not(.nav-link):hover::after {
         grid-template-columns: repeat(2, 1fr);
     }
 }
+
+/* Rope Knot Navigation Toggle */
+.rope-knot {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+    overflow: hidden;
+}
+
+.rope-knot:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.rope-knot:hover {
+    transform: rotate(5deg);
+}
+
+.rope {
+    width: 30px;
+    height: 30px;
+    position: relative;
+}
+
+.rope-part {
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background: var(--sand);
+    border-radius: 2px;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.rope-part-1 {
+    top: 7px;
+    transform-origin: left center;
+}
+
+.rope-part-2 {
+    top: 14px;
+}
+
+.rope-part-3 {
+    top: 21px;
+    transform-origin: left center;
+}
+
+.rope-knot::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 8px;
+    height: 8px;
+    background-color: var(--sand);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+/* Rope animation when menu is expanded */
+.navbar-toggler[aria-expanded="true"] .rope-part-1 {
+    transform: rotate(45deg) translate(2px, -2px);
+    width: 80%;
+}
+
+.navbar-toggler[aria-expanded="true"] .rope-part-2 {
+    opacity: 0;
+    transform: translateX(20px);
+}
+
+.navbar-toggler[aria-expanded="true"] .rope-part-3 {
+    transform: rotate(-45deg) translate(2px, 2px);
+    width: 80%;
+}
+
+.navbar-toggler[aria-expanded="true"]::before {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+}
+
+/* Extra rope decoration in navbar */
+.navbar::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-image: repeating-linear-gradient(
+        90deg,
+        var(--sand),
+        var(--sand) 10px,
+        transparent 10px,
+        transparent 20px
+    );
+}
+
+/* Mobile menu with rope styling */
+@media (max-width: 991px) {
+    .navbar-collapse {
+        background: var(--dark-bg);
+        padding: 1rem;
+        margin-top: 0.5rem;
+        border-radius: 0.5rem;
+        position: relative;
+    }
+    
+    .navbar-collapse::before, 
+    .navbar-collapse::after {
+        content: "";
+        position: absolute;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background-color: var(--sand);
+        top: 0;
+        transform: translateY(-50%);
+        z-index: 1;
+    }
+    
+    .navbar-collapse::before {
+        left: 20px;
+    }
+    
+    .navbar-collapse::after {
+        right: 20px;
+    }
+    
+    .navbar-nav {
+        position: relative;
+        z-index: 2;
+    }
+    
+    .nav-item {
+        border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+        margin: 0.5rem 0;
+        padding-bottom: 0.5rem;
+    }
+    
+    .nav-item:last-child {
+        border-bottom: none;
+    }
+    
+    .nav-link {
+        padding: 0.5rem 1rem;
+        transition: all 0.3s ease;
+        position: relative;
+        display: inline-block;
+    }
+    
+    .nav-link::before {
+        content: "⚓";
+        position: absolute;
+        left: -5px;
+        opacity: 0;
+        transform: translateX(-10px);
+        transition: all 0.3s ease;
+    }
+    
+    .nav-link:hover::before {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    
+    .nav-link:hover {
+        padding-left: 1.5rem;
+    }
+}
+
+/* Animation for rope knot when hovered */
+@keyframes ropeKnotSway {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(3deg);
+    }
+    75% {
+        transform: rotate(-3deg);
+    }
+}
+
+.rope-knot:hover .rope {
+    animation: ropeKnotSway 1.5s ease-in-out infinite;
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Weather Effects */
+.weather-effects {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+    overflow: hidden;
+}
+
+/* Seagulls */
+.seagull {
+    position: absolute;
+    top: 0;
+    width: 40px;
+    height: 20px;
+    pointer-events: none;
+}
+
+.seagull svg {
+    width: 100%;
+    height: 100%;
+}
+
+@keyframes flyAcross {
+    0% {
+        transform: translateX(-100px) translateY(var(--y-pos)) scale(var(--scale));
+    }
+    100% {
+        transform: translateX(calc(100vw + 100px)) translateY(calc(var(--y-pos) - 50px)) scale(var(--scale));
+    }
+}
+
+/* Jumping Fish */
+.jumping-fish {
+    position: absolute;
+    bottom: -50px;
+    width: 30px;
+    height: 30px;
+    pointer-events: none;
+    transform-origin: center;
+}
+
+@keyframes fishJump {
+    0% {
+        transform: translateY(0) rotate(0deg) scale(var(--scale));
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(calc(-1 * var(--jump-height))) rotate(var(--rotation)) scale(var(--scale));
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(0) rotate(0deg) scale(var(--scale));
+        opacity: 0;
+    }
+}
+
+/* Ripple effect when fish jumps */
+.ripple {
+    position: absolute;
+    bottom: 5px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    transform: translate(-50%, -50%) scale(0);
+    pointer-events: none;
+}
+
+@keyframes rippleEffect {
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 0.7;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0;
+    }
+}
+
+/* Nautical Map Background for About Section */
+#about {
+    position: relative;
+}
+
+.nautical-map {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.map-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.15;
+    transition: opacity 0.5s ease;
+}
+
+.map-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, transparent 30%, var(--light-bg) 80%);
+}
+
+/* Make about content more visible on top of map */
+.about-content {
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(3px);
+}
+
+/* Subtle animation for compass rose in the map */
+@keyframes compassPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.map-background g[transform*="translate(850, 120)"] {
+    animation: compassPulse 5s ease-in-out infinite;
+    transform-origin: 850px 120px;
+}
+
+/* Path drawing animation */
+.nautical-map path[stroke="#e67e22"] {
+    stroke-dasharray: 2000;
+    stroke-dashoffset: 2000;
+    animation: drawPath 8s ease-in-out forwards;
+}
+
+@keyframes drawPath {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+/* Journey markers fade-in animation */
+.nautical-map g[fill="#e67e22"] circle {
+    opacity: 0;
+    animation: fadeInMarkers 5s ease-in-out forwards;
+}
+
+.nautical-map g[fill="#e67e22"] circle:nth-child(1) {
+    animation-delay: 1s;
+}
+
+.nautical-map g[fill="#e67e22"] circle:nth-child(2) {
+    animation-delay: 2s;
+}
+
+.nautical-map g[fill="#e67e22"] circle:nth-child(3) {
+    animation-delay: 3s;
+}
+
+.nautical-map g[fill="#e67e22"] circle:nth-child(4) {
+    animation-delay: 4s;
+}
+
+.nautical-map g[fill="#e67e22"] circle:nth-child(5) {
+    animation-delay: 5s;
+}
+
+.nautical-map g[fill="#e67e22"] circle:nth-child(6) {
+    animation-delay: 6s;
+}
+
+.nautical-map g[fill="#e67e22"] circle:nth-child(7) {
+    animation-delay: 7s;
+}
+
+.nautical-map g[fill="#e67e22"] circle:nth-child(8) {
+    animation-delay: 8s;
+}
+
+@keyframes fadeInMarkers {
+    to {
+        opacity: 1;
+    }
+}
+
+/* Make landmasses interactive on hover */
+.nautical-map g[fill="#dfd3b9"] path,
+.nautical-map g[fill="#dfd3b9"] circle {
+    transition: transform 0.3s ease, fill 0.3s ease;
+    transform-origin: center;
+}
+
+.nautical-map:hover g[fill="#dfd3b9"] path:hover,
+.nautical-map:hover g[fill="#dfd3b9"] circle:hover {
+    fill: var(--sand);
+    transform: scale(1.03);
+    cursor: pointer;
+}
+
+/* Map labels appear on hover */
+.nautical-map g[font-family="serif"][font-size="14"] text {
+    opacity: 0.5;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.nautical-map:hover g[font-family="serif"][font-size="14"] text {
+    opacity: 1;
+    transform: translateY(-2px);
+}
+
+/* Parallax Ocean Depths */
+.ocean-parallax {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.ocean-layer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.1s ease-out;
+}
+
+.surface-layer {
+    top: 0;
+    height: 20%;
+    background: linear-gradient(to bottom, rgba(10, 61, 98, 0.01), rgba(10, 61, 98, 0));
+}
+
+.surface-layer img {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+    animation: waveBob 3s ease-in-out infinite;
+}
+
+@keyframes waveBob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+.shallow-layer {
+    top: 20%;
+    height: 20%;
+    background: linear-gradient(to bottom, rgba(10, 61, 98, 0), rgba(10, 61, 98, 0.03));
+}
+
+.mid-layer {
+    top: 40%;
+    height: 20%;
+    background: linear-gradient(to bottom, rgba(10, 61, 98, 0.03), rgba(10, 61, 98, 0.06));
+}
+
+.deep-layer {
+    top: 60%;
+    height: 20%;
+    background: linear-gradient(to bottom, rgba(10, 61, 98, 0.06), rgba(10, 61, 98, 0.1));
+}
+
+.abyss-layer {
+    top: 80%;
+    height: 20%;
+    background: linear-gradient(to bottom, rgba(10, 61, 98, 0.1), rgba(10, 61, 98, 0.15));
+}
+
+.sea-creature {
+    position: absolute;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease, transform 1s ease;
+}
+
+.sea-creature.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fish-small {
+    animation: fishSwim 20s linear infinite;
+}
+
+.fish-group {
+    animation: fishSchool 30s linear infinite;
+}
+
+.jellyfish {
+    animation: jellyfishFloat 15s ease-in-out infinite;
+}
+
+.turtle {
+    animation: turtleSwim 40s linear infinite;
+}
+
+.whale {
+    animation: whaleSwim 60s linear infinite;
+}
+
+@keyframes fishSwim {
+    0% { transform: translateX(-100px) scaleX(1); }
+    49% { transform: translateX(calc(100vw + 50px)) scaleX(1); }
+    50% { transform: translateX(calc(100vw + 50px)) scaleX(-1); }
+    99% { transform: translateX(-100px) scaleX(-1); }
+    100% { transform: translateX(-100px) scaleX(1); }
+}
+
+@keyframes fishSchool {
+    0% { transform: translateX(calc(100vw + 100px)) translateY(0) scaleX(-1); }
+    49% { transform: translateX(-100px) translateY(-20px) scaleX(-1); }
+    50% { transform: translateX(-100px) translateY(-20px) scaleX(1); }
+    99% { transform: translateX(calc(100vw + 100px)) translateY(0) scaleX(1); }
+    100% { transform: translateX(calc(100vw + 100px)) translateY(0) scaleX(-1); }
+}
+
+@keyframes jellyfishFloat {
+    0%, 100% { transform: translateY(0) translateX(0); }
+    25% { transform: translateY(-30px) translateX(30px); }
+    50% { transform: translateY(-15px) translateX(0); }
+    75% { transform: translateY(-30px) translateX(-30px); }
+}
+
+@keyframes turtleSwim {
+    0% { transform: translateX(calc(100vw + 150px)) scaleX(-1); }
+    100% { transform: translateX(-150px) scaleX(-1); }
+}
+
+@keyframes whaleSwim {
+    0% { transform: translateX(-200px) scaleX(1); }
+    100% { transform: translateX(calc(100vw + 200px)) scaleX(1); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .map-background {
+        opacity: 0.08; /* Less visible on mobile to avoid clutter */
+    }
+}

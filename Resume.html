@@ -14,8 +14,12 @@
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
             <a class="navbar-brand" href="index.html">Jack Shanafelt</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
+            <button class="navbar-toggler rope-knot" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="rope">
+                    <div class="rope-part rope-part-1"></div>
+                    <div class="rope-part rope-part-2"></div>
+                    <div class="rope-part rope-part-3"></div>
+                </div>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
@@ -192,7 +196,73 @@
         </div>
     </footer>
 
+    <!-- Compass Rose -->
+    <div class="compass-rose">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255, 255, 255, 0.6)" stroke-width="1"/>
+            <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(255, 255, 255, 0.4)" stroke-width="1" stroke-dasharray="2,4"/>
+            <line x1="50" y1="2" x2="50" y2="98" stroke="rgba(255, 255, 255, 0.6)" stroke-width="1"/>
+            <line x1="2" y1="50" x2="98" y2="50" stroke="rgba(255, 255, 255, 0.6)" stroke-width="1"/>
+            <line x1="15" y1="15" x2="85" y2="85" stroke="rgba(255, 255, 255, 0.3)" stroke-width="1"/>
+            <line x1="15" y1="85" x2="85" y2="15" stroke="rgba(255, 255, 255, 0.3)" stroke-width="1"/>
+            <path d="M50,10 L55,45 L50,40 L45,45 Z" fill="#0a3d62"/>
+            <path d="M50,90 L45,55 L50,60 L55,55 Z" fill="#55efc4"/>
+            <path d="M10,50 L45,45 L40,50 L45,55 Z" fill="rgba(255, 255, 255, 0.8)"/>
+            <path d="M90,50 L55,55 L60,50 L55,45 Z" fill="#e67e22"/>
+            <circle cx="50" cy="50" r="5" fill="rgba(255, 255, 255, 0.8)"/>
+        </svg>
+    </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Rope knot navigation animation
+            const ropeKnot = document.querySelector('.rope-knot');
+            
+            // Sound effect for rope interaction
+            function playRopeSound() {
+                try {
+                    // Create a simple rope sound using Web Audio API
+                    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                    const oscillator = audioContext.createOscillator();
+                    const gainNode = audioContext.createGain();
+                    
+                    oscillator.connect(gainNode);
+                    gainNode.connect(audioContext.destination);
+                    
+                    oscillator.type = 'sine';
+                    oscillator.frequency.setValueAtTime(180, audioContext.currentTime);
+                    oscillator.frequency.exponentialRampToValueAtTime(120, audioContext.currentTime + 0.2);
+                    
+                    gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+                    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.2);
+                    
+                    oscillator.start();
+                    oscillator.stop(audioContext.currentTime + 0.2);
+                } catch (e) {
+                    // Silently fail if audio context cannot be created
+                    console.log("Audio context not available");
+                }
+            }
+            
+            // Add sound effect when clicking the rope knot
+            if (ropeKnot) {
+                ropeKnot.addEventListener('click', function() {
+                    playRopeSound();
+                });
+            }
+
+            // Animate rope when navbar is opened/closed
+            document.addEventListener('shown.bs.collapse', function(event) {
+                if (event.target.id === 'navbarNav') {
+                    document.querySelectorAll('.nav-item').forEach((item, index) => {
+                        item.style.animation = `fadeInRight 0.5s forwards ${0.1 + index * 0.1}s`;
+                        item.style.opacity = '0';
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>

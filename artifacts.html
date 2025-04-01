@@ -202,8 +202,12 @@
     <nav class="navbar navbar-expand-lg artifacts-nav">
         <div class="container-fluid">
             <a class="navbar-brand text-white" href="#">Jack Shanafelt</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+            <button class="navbar-toggler rope-knot" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="rope">
+                    <div class="rope-part rope-part-1"></div>
+                    <div class="rope-part rope-part-2"></div>
+                    <div class="rope-part rope-part-3"></div>
+                </div>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
@@ -269,5 +273,175 @@
             <circle cx="50" cy="50" r="5" fill="rgba(255, 255, 255, 0.8)"/>
         </svg>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Rope knot navigation animation
+            const ropeKnot = document.querySelector('.rope-knot');
+            
+            // Sound effect for rope interaction
+            function playRopeSound() {
+                try {
+                    // Create a simple rope sound using Web Audio API
+                    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                    const oscillator = audioContext.createOscillator();
+                    const gainNode = audioContext.createGain();
+                    
+                    oscillator.connect(gainNode);
+                    gainNode.connect(audioContext.destination);
+                    
+                    oscillator.type = 'sine';
+                    oscillator.frequency.setValueAtTime(180, audioContext.currentTime);
+                    oscillator.frequency.exponentialRampToValueAtTime(120, audioContext.currentTime + 0.2);
+                    
+                    gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+                    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.2);
+                    
+                    oscillator.start();
+                    oscillator.stop(audioContext.currentTime + 0.2);
+                } catch (e) {
+                    // Silently fail if audio context cannot be created
+                    console.log("Audio context not available");
+                }
+            }
+            
+            // Add sound effect when clicking the rope knot
+            if (ropeKnot) {
+                ropeKnot.addEventListener('click', function() {
+                    playRopeSound();
+                });
+            }
+
+            // Animate rope when navbar is opened/closed
+            document.addEventListener('shown.bs.collapse', function(event) {
+                if (event.target.id === 'navbarNav') {
+                    document.querySelectorAll('.nav-item').forEach((item, index) => {
+                        item.style.animation = `fadeInRight 0.5s forwards ${0.1 + index * 0.1}s`;
+                        item.style.opacity = '0';
+                    });
+                }
+            });
+
+            // Add animation style
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes fadeInRight {
+                    from {
+                        opacity: 0;
+                        transform: translateX(-20px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateX(0);
+                    }
+                }
+
+                /* Rope Knot Styling */
+                .rope-knot {
+                    position: relative;
+                    width: 40px;
+                    height: 40px;
+                    background: transparent;
+                    border: none;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    transition: transform 0.3s ease;
+                    overflow: hidden;
+                }
+
+                .rope-knot:focus {
+                    outline: none;
+                    box-shadow: none;
+                }
+
+                .rope-knot:hover {
+                    transform: rotate(5deg);
+                }
+
+                .rope {
+                    width: 30px;
+                    height: 30px;
+                    position: relative;
+                }
+
+                .rope-part {
+                    position: absolute;
+                    height: 3px;
+                    width: 100%;
+                    background: var(--sand);
+                    border-radius: 2px;
+                    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+                }
+
+                .rope-part-1 {
+                    top: 7px;
+                    transform-origin: left center;
+                }
+
+                .rope-part-2 {
+                    top: 14px;
+                }
+
+                .rope-part-3 {
+                    top: 21px;
+                    transform-origin: left center;
+                }
+
+                .rope-knot::before {
+                    content: "";
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    width: 8px;
+                    height: 8px;
+                    background-color: var(--sand);
+                    border-radius: 50%;
+                    transform: translate(-50%, -50%) scale(0);
+                    opacity: 0;
+                    transition: all 0.5s ease;
+                }
+
+                /* Rope animation when menu is expanded */
+                .navbar-toggler[aria-expanded="true"] .rope-part-1 {
+                    transform: rotate(45deg) translate(2px, -2px);
+                    width: 80%;
+                }
+
+                .navbar-toggler[aria-expanded="true"] .rope-part-2 {
+                    opacity: 0;
+                    transform: translateX(20px);
+                }
+
+                .navbar-toggler[aria-expanded="true"] .rope-part-3 {
+                    transform: rotate(-45deg) translate(2px, 2px);
+                    width: 80%;
+                }
+
+                .navbar-toggler[aria-expanded="true"]::before {
+                    transform: translate(-50%, -50%) scale(1);
+                    opacity: 1;
+                }
+
+                /* Animation for rope knot when hovered */
+                @keyframes ropeKnotSway {
+                    0%, 100% {
+                        transform: rotate(0deg);
+                    }
+                    25% {
+                        transform: rotate(3deg);
+                    }
+                    75% {
+                        transform: rotate(-3deg);
+                    }
+                }
+
+                .rope-knot:hover .rope {
+                    animation: ropeKnotSway 1.5s ease-in-out infinite;
+                }
+            `;
+            document.head.appendChild(style);
+        });
+    </script>
 </body>
 </html>
