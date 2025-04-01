@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="en">
-<html>
 <head>
     <meta name='viewport' content='width=device-width, initial-scale=1' />
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,11 +17,191 @@
         <link rel="stylesheet" href="style.css">
     </noscript>
     <title>Jack Shanafelt's Artifacts</title>
+    <style>
+        #artifacts {
+            background-color: var(--light-bg);
+        }
+
+        .artifact-header {
+            background: linear-gradient(135deg, var(--ocean-deep), var(--ocean-surface));
+            color: white;
+            padding: 4rem 0;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .artifact-header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            z-index: 0;
+        }
+
+        .artifact-header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            position: relative;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .artifact-container {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 4px 20px rgba(10, 61, 98, 0.1);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .artifact-container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--ocean-deep), var(--seafoam));
+        }
+
+        .artifact-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(10, 61, 98, 0.15);
+        }
+
+        .artifact-container img {
+            border-radius: 0.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.5s ease;
+        }
+
+        .artifact-container:hover img {
+            transform: scale(1.02);
+        }
+
+        .artifact-container p {
+            margin-top: 1.5rem;
+            padding-left: 1rem;
+            border-left: 3px solid var(--ocean-surface);
+            font-size: 1.1rem;
+            color: var(--text-color);
+        }
+
+        .artifact-container iframe {
+            border-radius: 0.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            max-width: 100%;
+        }
+
+        .artifact-title {
+            position: relative;
+            color: var(--ocean-deep);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
+        .artifact-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--seafoam);
+        }
+
+        .artifacts-nav {
+            background: linear-gradient(135deg, var(--ocean-deep), var(--dark-bg));
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .artifacts-nav .navbar-brand {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .artifacts-nav .navbar-brand::before {
+            content: "⚓";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.1rem;
+        }
+
+        .artifacts-nav .nav-link {
+            color: white !important;
+            transition: color 0.3s ease;
+        }
+
+        .artifacts-nav .nav-link:hover {
+            color: var(--seafoam) !important;
+        }
+
+        .wave-divider {
+            position: relative;
+            height: 60px;
+            margin-top: -1px;
+        }
+
+        .wave-divider svg {
+            position: absolute;
+            width: 100%;
+            height: 60px;
+            fill: var(--light-bg);
+        }
+
+        .artifact-footer {
+            background: linear-gradient(to bottom, var(--dark-bg), #0f2633);
+            color: white;
+            padding: 2rem 0;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .artifact-footer a {
+            color: var(--seafoam);
+            margin: 0 1rem;
+            position: relative;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .artifact-footer a:hover {
+            color: white;
+        }
+
+        .artifact-footer a::after {
+            content: "";
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: white;
+            transition: width 0.3s ease;
+        }
+
+        .artifact-footer a:hover::after {
+            width: 100%;
+        }
+    </style>
 </head>
 <body id="artifacts">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg artifacts-nav">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Jack Shanafelt</a>
+            <a class="navbar-brand text-white" href="#">Jack Shanafelt</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -38,22 +217,57 @@
             </div>
         </div>
     </nav>
-<div class="container">
-    <img src="Images\Screenshot (57).png" class="img-fluid" alt="Website Screenshot" id="MobileWeb">
-    <p>This is from a project I've previously worked on for one of my classes. The goal for this project was to chose a topic and compile sufficent data so that I could make a table and a set of graphs to demonstrate it. I made the website responsive so that people could have an easier time
-        viewing it on their mobile devices. 
-    </p>
-</div>
-<div class="container">
-    <img src="Images\Screenshot (84).png" class="img-fluid" alt="3D Modled Wheel" id="Wheel">
-    <p>This is a 3D model that I made for a Virtual reality project that I have been working on.</p>
-</div>
-<div class="container">
-    <iframe frameborder="0" src="https://itch.io/embed-upload/7862449?color=000000" allowfullscreen="" width="500" height="320"><a href="https://ciemnywilk.itch.io/the-allegory-of-superposition">Play The Allegory Of Superposition Prototype on itch.io</a></iframe>
-</div>
-<div class="footer">
-    <a href="https://www.linkedin.com/in/jack-shanafelt-772125276/" target="_blank">linkedin</a>
-    <a href="mailto:shanafeltj1@gmail.com">Email me</a>
-</div>
+
+    <header class="artifact-header">
+        <div class="container">
+            <h1>Portfolio Artifacts</h1>
+            <p class="lead">A showcase of my work and projects</p>
+        </div>
+    </header>
+
+    <div class="container artifact-container">
+        <h2 class="artifact-title">Data Visualization Project</h2>
+        <img src="Images\Screenshot (57).png" class="img-fluid" alt="Website Screenshot" id="MobileWeb">
+        <p>This is from a project I've previously worked on for one of my classes. The goal for this project was to choose a topic and compile sufficient data so that I could make a table and a set of graphs to demonstrate it. I made the website responsive so that people could have an easier time viewing it on their mobile devices.</p>
+    </div>
+
+    <div class="container artifact-container">
+        <h2 class="artifact-title">3D Modeling Work</h2>
+        <img src="Images\Screenshot (84).png" class="img-fluid" alt="3D Modeled Wheel" id="Wheel">
+        <p>This is a 3D model that I made for a Virtual Reality project that I have been working on. It demonstrates my ability to create detailed assets that can be used in interactive experiences.</p>
+    </div>
+
+    <div class="container artifact-container">
+        <h2 class="artifact-title">The Allegory Of Superposition Game</h2>
+        <div class="text-center">
+            <iframe frameborder="0" src="https://itch.io/embed-upload/7862449?color=000000" allowfullscreen="" width="500" height="320"><a href="https://ciemnywilk.itch.io/the-allegory-of-superposition">Play The Allegory Of Superposition Prototype on itch.io</a></iframe>
+        </div>
+        <p>Experience my Unity-based platformer game that explores quantum mechanics concepts through innovative gameplay mechanics. The game challenges players to think about quantum superposition while navigating through engaging levels.</p>
+    </div>
+
+    <footer class="artifact-footer">
+        <a href="https://www.linkedin.com/in/jack-shanafelt-772125276/" target="_blank">LinkedIn</a>
+        <a href="mailto:shanafeltj1@gmail.com">Email me</a>
+        <div class="mt-3">
+            <p>&copy; 2024 Jack Shanafelt. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Compass Rose -->
+    <div class="compass-rose">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255, 255, 255, 0.6)" stroke-width="1"/>
+            <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(255, 255, 255, 0.4)" stroke-width="1" stroke-dasharray="2,4"/>
+            <line x1="50" y1="2" x2="50" y2="98" stroke="rgba(255, 255, 255, 0.6)" stroke-width="1"/>
+            <line x1="2" y1="50" x2="98" y2="50" stroke="rgba(255, 255, 255, 0.6)" stroke-width="1"/>
+            <line x1="15" y1="15" x2="85" y2="85" stroke="rgba(255, 255, 255, 0.3)" stroke-width="1"/>
+            <line x1="15" y1="85" x2="85" y2="15" stroke="rgba(255, 255, 255, 0.3)" stroke-width="1"/>
+            <path d="M50,10 L55,45 L50,40 L45,45 Z" fill="#0a3d62"/>
+            <path d="M50,90 L45,55 L50,60 L55,55 Z" fill="#55efc4"/>
+            <path d="M10,50 L45,45 L40,50 L45,55 Z" fill="rgba(255, 255, 255, 0.8)"/>
+            <path d="M90,50 L55,55 L60,50 L55,45 Z" fill="#e67e22"/>
+            <circle cx="50" cy="50" r="5" fill="rgba(255, 255, 255, 0.8)"/>
+        </svg>
+    </div>
 </body>
 </html>

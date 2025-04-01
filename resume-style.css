@@ -1,27 +1,64 @@
-/* resume-style.css */
+/* resume-style.css - Nautical Theme */
 .resume-header {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: linear-gradient(135deg, var(--ocean-deep), var(--ocean-surface));
     color: white;
     padding: 4rem 0;
     margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.resume-header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    z-index: 0;
+}
+
+.resume-header::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 10px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z' opacity='.25' fill='%23ffffff'%3E%3C/path%3E%3Cpath d='M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z' opacity='.5' fill='%23ffffff'%3E%3C/path%3E%3C/svg%3E");
+    background-size: cover;
 }
 
 .resume-header h1 {
     font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: 1rem;
+    position: relative;
+    z-index: 1;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .contact-info {
     display: flex;
     gap: 2rem;
     flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
 }
 
 .contact-info span {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2rem;
+    transition: background 0.3s ease;
+}
+
+.contact-info span:hover {
+    background: rgba(255, 255, 255, 0.2);
 }
 
 .resume-content {
@@ -33,22 +70,50 @@
     background: white;
     padding: 2rem;
     border-radius: 1rem;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 20px rgba(10, 61, 98, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.resume-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--ocean-deep), var(--seafoam));
 }
 
 .resume-section h2 {
-    color: var(--primary-color);
+    color: var(--ocean-deep);
     font-size: 1.75rem;
     margin-bottom: 1.5rem;
     display: flex;
     align-items: center;
     gap: 0.75rem;
+    padding-left: 1rem;
+    border-bottom: 1px solid rgba(10, 61, 98, 0.1);
+    padding-bottom: 0.75rem;
 }
 
 .resume-item {
     margin-bottom: 2rem;
     padding-bottom: 2rem;
-    border-bottom: 1px solid #e5e7eb;
+    border-bottom: 1px dashed rgba(10, 61, 98, 0.1);
+    position: relative;
+}
+
+.resume-item::after {
+    content: "⚓";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.8rem;
+    background: white;
+    padding: 0 10px;
+    color: var(--ocean-surface);
 }
 
 .resume-item:last-child {
@@ -57,20 +122,32 @@
     border-bottom: none;
 }
 
+.resume-item:last-child::after {
+    display: none;
+}
+
 .job-header, .education-header {
     margin-bottom: 1rem;
+    position: relative;
 }
 
 .job-header h3, .education-header h3 {
-    color: #1f2937;
+    color: var(--ocean-deep);
     font-size: 1.25rem;
     margin-bottom: 0.5rem;
 }
 
 .company, .school {
     font-weight: 500;
-    color: var(--primary-color);
+    color: var(--ocean-surface);
     margin-right: 1rem;
+    position: relative;
+}
+
+.company::before, .school::before {
+    content: "•";
+    margin-right: 0.3rem;
+    color: var(--seafoam);
 }
 
 .duration, .location {
@@ -88,28 +165,44 @@
 .responsibility-list li, .achievement-list li {
     position: relative;
     padding-left: 1.5rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
 }
 
 .responsibility-list li:before {
-    content: "•";
+    content: "↣";
     position: absolute;
     left: 0;
-    color: var(--primary-color);
+    color: var(--ocean-surface);
+}
+
+.achievement-list li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--seafoam);
 }
 
 .tech-stack {
-    margin-top: 1rem;
+    margin-top: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
 }
 
 .tech-tag {
     display: inline-block;
     padding: 0.25rem 0.75rem;
-    background-color: #f3f4f6;
+    background-color: rgba(10, 61, 98, 0.05);
+    border: 1px solid rgba(10, 61, 98, 0.1);
     border-radius: 1rem;
     font-size: 0.875rem;
-    margin-right: 0.5rem;
-    margin-bottom: 0.5rem;
+    color: var(--ocean-deep);
+    transition: all 0.3s ease;
+}
+
+.tech-tag:hover {
+    background-color: rgba(10, 61, 98, 0.1);
+    transform: translateY(-2px);
 }
 
 .skills-grid {
@@ -119,9 +212,21 @@
 }
 
 .skill-category h3 {
-    color: #1f2937;
+    color: var(--ocean-deep);
     font-size: 1.1rem;
     margin-bottom: 1rem;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.skill-category h3::before {
+    content: "⚓";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--ocean-surface);
+    font-size: 0.9rem;
 }
 
 .skills-list {
@@ -133,23 +238,19 @@
 .skills-list li {
     position: relative;
     padding-left: 1.25rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
+    transition: transform 0.3s ease;
+}
+
+.skills-list li:hover {
+    transform: translateX(5px);
 }
 
 .skills-list li:before {
     content: "→";
     position: absolute;
     left: 0;
-    color: var(--primary-color);
-}
-
-/* Download button styling */
-.btn-primary {
-    padding: 0.75rem 1.5rem;
-    font-weight: 500;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
+    color: var(--seafoam);
 }
 
 /* Responsive adjustments */
@@ -185,10 +286,18 @@
         padding: 1rem 0;
     }
     
+    .resume-header::before, .resume-header::after {
+        display: none;
+    }
+    
     .resume-section {
         box-shadow: none;
         padding: 1rem 0;
         break-inside: avoid;
+    }
+    
+    .resume-section::before {
+        display: none;
     }
     
     .resume-content {

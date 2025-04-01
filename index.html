@@ -27,7 +27,7 @@
                         <a class="nav-link" href="index.html#skills">Skills</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="Resume.html">Resume</a>  <!-- Changed to lowercase -->
+                        <a class="nav-link" href="Resume.html">Resume</a>
                     </li>
                 </ul>
             </div>
@@ -35,26 +35,39 @@
     </nav>
 
     <header class="hero-section">
-        <div class="container">
+        <canvas id="oceanCanvas"></canvas>
+        <div class="container hero-content">
             <div class="row align-items-center">
                 <div class="col-lg-6">
-                    <h1 class="display-4 fw-bold">Game & Web Developer</h1>
+                    <h1 class="display-4 fw-bold hero-title">Game & Web Developer</h1>
                     <p class="lead">GIMM Major at Boise State University</p>
+                    <div class="hero-tagline">
+                        <span class="typed-text"></span><span class="cursor">&nbsp;</span>
+                    </div>
                     <div class="hero-buttons">
                         <a href="#projects" class="btn btn-primary">View Projects</a>
                         <a href="#contact" class="btn btn-outline-light">Contact Me</a>
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <img src="Images/IMG_2130.jpg" alt="Jack Shanafelt" class="hero-image">
+                    <div class="hero-image-container">
+                        <img src="Images/IMG_2130.jpg" alt="Jack Shanafelt" class="hero-image">
+                    </div>
                 </div>
             </div>
         </div>
+        <div class="ocean-floor"></div>
     </header>
+
+    <div class="wave-divider top-wave">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"></path>
+        </svg>
+    </div>
 
     <section id="about" class="section-padding">
         <div class="container">
-            <h2 class="section-title">About Me</h2>
+            <h2 class="section-title section-heading-nautical about-icon">About Me</h2>
             <div class="row">
                 <div class="col-lg-8 mx-auto">
                     <div class="about-content">
@@ -119,9 +132,11 @@
         </div>
     </section>
 
+    <div class="nautical-border"></div>
+
     <section id="skills" class="section-padding bg-light">
         <div class="container">
-            <h2 class="section-title">Skills</h2>
+            <h2 class="section-title section-heading-nautical skills-icon">Skills</h2>
             <div class="row">
                 <div class="col-md-4">
                     <div class="skill-card">
@@ -193,41 +208,54 @@
         </div>
     </section>
 
+    <div class="nautical-border"></div>
+
     <section id="projects" class="section-padding">
         <div class="container">
-            <h2 class="section-title">Projects</h2>
-            <div class="row">
-                <div class="col-lg-6 mb-4">
-                    <div class="project-card">
-                        <div class="project-image">
-                            <img src="Images/Screenshot (57).png" alt="Mobile Web Project">
-                        </div>
-                        <div class="project-content">
-                            <h3>Data Visualization Project</h3>
-                            <p>A responsive web application showcasing data visualization techniques with interactive elements.</p>
-                            <div class="project-tags">
-                                <span class="tag">HTML</span>
-                                <span class="tag">CSS</span>
-                                <span class="tag">JavaScript</span>
-                                <span class="tag">D3.js</span>
+            <h2 class="section-title section-heading-nautical projects-icon">Projects</h2>
+            <div class="ocean-container">
+                <div class="ocean-surface"></div>
+                <div class="row obelisk-container">
+                    <div class="col-lg-6 mb-4">
+                        <div class="obelisk-card">
+                            <div class="obelisk-top"></div>
+                            <div class="obelisk-body">
+                                <div class="project-image">
+                                    <img src="Images/Screenshot (57).png" alt="Mobile Web Project">
+                                </div>
+                                <div class="project-content">
+                                    <h3>Data Visualization Project</h3>
+                                    <p>A responsive web application showcasing data visualization techniques with interactive elements.</p>
+                                    <div class="project-tags">
+                                        <span class="tag">HTML</span>
+                                        <span class="tag">CSS</span>
+                                        <span class="tag">JavaScript</span>
+                                        <span class="tag">D3.js</span>
+                                    </div>
+                                </div>
                             </div>
+                            <div class="obelisk-base"></div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-6 mb-4">
-                    <div class="project-card">
-                        <div class="project-image">
-                            <img src="Images/Screenshot (84).png" alt="3D Modeled Wheel">
-                        </div>
-                        <div class="project-content">
-                            <h3>The Allegory of Superposition</h3>
-                            <p>A Unity-based platformer exploring quantum mechanics concepts through innovative gameplay mechanics.</p>
-                            <div class="project-tags">
-                                <span class="tag">Unity</span>
-                                <span class="tag">C#</span>
-                                <span class="tag">3D Modeling</span>
+                    <div class="col-lg-6 mb-4">
+                        <div class="obelisk-card">
+                            <div class="obelisk-top"></div>
+                            <div class="obelisk-body">
+                                <div class="project-image">
+                                    <img src="Images/Screenshot (84).png" alt="3D Modeled Wheel">
+                                </div>
+                                <div class="project-content">
+                                    <h3>The Allegory of Superposition</h3>
+                                    <p>A Unity-based platformer exploring quantum mechanics concepts through innovative gameplay mechanics.</p>
+                                    <div class="project-tags">
+                                        <span class="tag">Unity</span>
+                                        <span class="tag">C#</span>
+                                        <span class="tag">3D Modeling</span>
+                                    </div>
+                                    <a href="https://ciemnywilk.itch.io/the-allegory-of-superposition" class="btn btn-primary mt-3">Play Demo</a>
+                                </div>
                             </div>
-                            <a href="https://ciemnywilk.itch.io/the-allegory-of-superposition" class="btn btn-primary mt-3">Play Demo</a>
+                            <div class="obelisk-base"></div>
                         </div>
                     </div>
                 </div>
@@ -235,9 +263,11 @@
         </div>
     </section>
 
+    <div class="nautical-border"></div>
+
     <section id="contact" class="section-padding bg-dark text-white">
         <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
+            <h2 class="section-title section-heading-nautical contact-icon">Get In Touch</h2>
             <div class="row">
                 <div class="col-lg-6 mx-auto text-center">
                     <p class="mb-4">Interested in working together? Let's connect!</p>
@@ -264,7 +294,198 @@
         </div>
     </footer>
 
+    <!-- Compass Rose -->
+    <div class="compass-rose">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255, 255, 255, 0.6)" stroke-width="1"/>
+            <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(255, 255, 255, 0.4)" stroke-width="1" stroke-dasharray="2,4"/>
+            <line x1="50" y1="2" x2="50" y2="98" stroke="rgba(255, 255, 255, 0.6)" stroke-width="1"/>
+            <line x1="2" y1="50" x2="98" y2="50" stroke="rgba(255, 255, 255, 0.6)" stroke-width="1"/>
+            <line x1="15" y1="15" x2="85" y2="85" stroke="rgba(255, 255, 255, 0.3)" stroke-width="1"/>
+            <line x1="15" y1="85" x2="85" y2="15" stroke="rgba(255, 255, 255, 0.3)" stroke-width="1"/>
+            <path d="M50,10 L55,45 L50,40 L45,45 Z" fill="#0a3d62"/>
+            <path d="M50,90 L45,55 L50,60 L55,55 Z" fill="#55efc4"/>
+            <path d="M10,50 L45,45 L40,50 L45,55 Z" fill="rgba(255, 255, 255, 0.8)"/>
+            <path d="M90,50 L55,55 L60,50 L55,45 Z" fill="#e67e22"/>
+            <circle cx="50" cy="50" r="5" fill="rgba(255, 255, 255, 0.8)"/>
+        </svg>
+    </div>
+
+    <!-- Floating icons -->
+    <div class="floating-icons">
+        <div class="floating-icon" style="top: 30%; left: 5%;">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="floating">
+                <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="rgba(10, 61, 98, 0.1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M12 16V12" stroke="rgba(10, 61, 98, 0.1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M12 8H12.01" stroke="rgba(10, 61, 98, 0.1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+        <div class="floating-icon" style="top: 70%; right: 10%;">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="floating" style="animation-delay: 0.5s;">
+                <path d="M3 9L12 2L21 9V20C21 20.5304 20.7893 21.0391 20.4142 21.4142C20.0391 21.7893 19.5304 22 19 22H5C4.46957 22 3.96086 21.7893 3.58579 21.4142C3.21071 21.0391 3 20.5304 3 20V9Z" stroke="rgba(10, 61, 98, 0.1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M9 22V12H15V22" stroke="rgba(10, 61, 98, 0.1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+        <div class="floating-icon" style="top: 40%; right: 20%;">
+            <svg width="25" height="25" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="floating" style="animation-delay: 1s;">
+                <path d="M12 19V5" stroke="rgba(10, 61, 98, 0.1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M5 12L12 5L19 12" stroke="rgba(10, 61, 98, 0.1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+    </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Ocean Canvas Animation
+            const canvas = document.getElementById('oceanCanvas');
+            const ctx = canvas.getContext('2d');
+            
+            let width = canvas.width = window.innerWidth;
+            let height = canvas.height = window.innerHeight;
+            
+            // Resize handler
+            window.addEventListener('resize', () => {
+                width = canvas.width = window.innerWidth;
+                height = canvas.height = window.innerHeight;
+            });
+            
+            // Wave parameters
+            const waves = [];
+            const bubbles = [];
+            const numWaves = 3;
+            const numBubbles = 20;
+            
+            // Create waves
+            for(let i = 0; i < numWaves; i++) {
+                waves.push({
+                    y: height * (0.7 + i * 0.1),
+                    amplitude: 10 * (i + 1),
+                    frequency: 0.005 * (i + 1),
+                    speed: 0.05 * (i + 1),
+                    offset: Math.random() * 100,
+                    color: `rgba(255, 255, 255, ${0.1 - i * 0.03})`
+                });
+            }
+            
+            // Create bubbles
+            for(let i = 0; i < numBubbles; i++) {
+                bubbles.push({
+                    x: Math.random() * width,
+                    y: Math.random() * height + height / 2,
+                    radius: Math.random() * 5 + 2,
+                    speed: Math.random() * 2 + 1,
+                    opacity: Math.random() * 0.5 + 0.2
+                });
+            }
+            
+            // Mouse tracking
+            let mouseX = width / 2;
+            let mouseY = height / 2;
+            
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+            });
+            
+            // Animation loop
+            function animate() {
+                ctx.clearRect(0, 0, width, height);
+                
+                // Draw waves
+                for(const wave of waves) {
+                    wave.offset += wave.speed;
+                    
+                    ctx.beginPath();
+                    ctx.moveTo(0, wave.y);
+                    
+                    for(let x = 0; x < width; x += 10) {
+                        // Add mouse influence
+                        const distX = Math.abs(x - mouseX);
+                        let mouseEffect = 0;
+                        
+                        if(distX < 200) {
+                            mouseEffect = 20 * (1 - distX / 200);
+                        }
+                        
+                        const y = wave.y + 
+                                Math.sin(x * wave.frequency + wave.offset) * wave.amplitude + 
+                                mouseEffect;
+                        
+                        ctx.lineTo(x, y);
+                    }
+                    
+                    ctx.lineTo(width, height);
+                    ctx.lineTo(0, height);
+                    ctx.closePath();
+                    ctx.fillStyle = wave.color;
+                    ctx.fill();
+                }
+                
+                // Draw bubbles
+                for(const bubble of bubbles) {
+                    bubble.y -= bubble.speed;
+                    
+                    // Reset bubbles that go off screen
+                    if(bubble.y < -bubble.radius * 2) {
+                        bubble.y = height + bubble.radius;
+                        bubble.x = Math.random() * width;
+                    }
+                    
+                    ctx.beginPath();
+                    ctx.arc(bubble.x, bubble.y, bubble.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(255, 255, 255, ${bubble.opacity})`;
+                    ctx.fill();
+                }
+                
+                requestAnimationFrame(animate);
+            }
+            
+            animate();
+            
+            // Typing animation
+            const typedTextSpan = document.querySelector(".typed-text");
+            const phrases = [
+                "From navigating seas to navigating code",
+                "Creating immersive digital experiences",
+                "Game development enthusiast",
+                "Turning complex concepts into games"
+            ];
+            
+            let phraseIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+            
+            function type() {
+                const currentPhrase = phrases[phraseIndex];
+                
+                if(isDeleting) {
+                    typedTextSpan.textContent = currentPhrase.substring(0, charIndex - 1);
+                    charIndex--;
+                } else {
+                    typedTextSpan.textContent = currentPhrase.substring(0, charIndex + 1);
+                    charIndex++;
+                }
+                
+                // Speed adjustment
+                let typeSpeed = isDeleting ? 50 : 100;
+                
+                // Delay after typing complete
+                if(!isDeleting && charIndex === currentPhrase.length) {
+                    typeSpeed = 1500; // Pause at the end
+                    isDeleting = true;
+                } else if(isDeleting && charIndex === 0) {
+                    isDeleting = false;
+                    phraseIndex = (phraseIndex + 1) % phrases.length;
+                    typeSpeed = 500; // Pause before next phrase
+                }
+                
+                setTimeout(type, typeSpeed);
+            }
+            
+            setTimeout(type, 1000);
+        });
+    </script>
 </body>
 </html>
