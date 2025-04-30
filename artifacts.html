@@ -196,6 +196,92 @@
         .artifact-footer a:hover::after {
             width: 100%;
         }
+        
+        /* Additional styles for AI Dungeon Master section */
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 1.5rem 0;
+        }
+        
+        .tech-badge {
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: white;
+            background: linear-gradient(135deg, var(--ocean-deep), var(--ocean-surface));
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .system-diagram {
+            border: 1px solid #e6e6e6;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 2rem 0;
+        }
+        
+        .feature-list {
+            margin-left: 1rem;
+            padding-left: 1rem;
+            list-style-type: none;
+        }
+        
+        .feature-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .feature-list li::before {
+            content: "⚡";
+            position: absolute;
+            left: 0;
+            color: var(--ocean-surface);
+        }
+        
+        .code-preview {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 2rem 0;
+            font-family: monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+        }
+        
+        .development-timeline {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e6e6e6;
+        }
+        
+        .timeline-item {
+            display: flex;
+            margin-bottom: 1.5rem;
+        }
+        
+        .timeline-date {
+            width: 120px;
+            font-weight: 600;
+            color: var(--ocean-deep);
+        }
+        
+        .timeline-content {
+            flex: 1;
+        }
+        
+        @media (max-width: 768px) {
+            .timeline-item {
+                flex-direction: column;
+            }
+            
+            .timeline-date {
+                width: 100%;
+                margin-bottom: 0.5rem;
+            }
+        }
     </style>
 </head>
 <body id="artifacts">
@@ -230,23 +316,710 @@
     </header>
 
     <div class="container artifact-container">
-        <h2 class="artifact-title">Data Visualization Project</h2>
-        <img src="Images\Screenshot (57).png" class="img-fluid" alt="Website Screenshot" id="MobileWeb">
-        <p>This is from a project I've previously worked on for one of my classes. The goal for this project was to choose a topic and compile sufficient data so that I could make a table and a set of graphs to demonstrate it. I made the website responsive so that people could have an easier time viewing it on their mobile devices.</p>
-    </div>
-
-    <div class="container artifact-container">
-        <h2 class="artifact-title">3D Modeling Work</h2>
-        <img src="Images\Screenshot (84).png" class="img-fluid" alt="3D Modeled Wheel" id="Wheel">
-        <p>This is a 3D model that I made for a Virtual Reality project that I have been working on. It demonstrates my ability to create detailed assets that can be used in interactive experiences.</p>
-    </div>
-
-    <div class="container artifact-container">
-        <h2 class="artifact-title">The Allegory Of Superposition Game</h2>
-        <div class="text-center">
-            <iframe frameborder="0" src="https://itch.io/embed-upload/7862449?color=000000" allowfullscreen="" width="500" height="320"><a href="https://ciemnywilk.itch.io/the-allegory-of-superposition">Play The Allegory Of Superposition Prototype on itch.io</a></iframe>
+        <h2 class="artifact-title">AI Dungeon Master</h2>
+        <img src="/api/placeholder/800/400" class="img-fluid" alt="AI Dungeon Master Screenshot" id="AIDungeonMaster">
+        <div class="tech-stack">
+            <span class="tech-badge">Unity</span>
+            <span class="tech-badge">Python</span>
+            <span class="tech-badge">C#</span>
+            <span class="tech-badge">Flask</span>
+            <span class="tech-badge">LLM API</span>
+            <span class="tech-badge">HuggingFace</span>
         </div>
-        <p>Experience my Unity-based platformer game that explores quantum mechanics concepts through innovative gameplay mechanics. The game challenges players to think about quantum superposition while navigating through engaging levels.</p>
+        <p>An innovative text-based RPG system that integrates large language models to create dynamic storytelling experiences with consistent game mechanics. This project combines traditional RPG elements with AI-driven narrative generation to create unique adventures that adapt to player choices while maintaining mechanical consistency.</p>
+        
+        <h3 style="margin-top: 2rem; font-size: 1.4rem; color: var(--ocean-deep);">Key Features</h3>
+        <ul class="feature-list">
+            <li>Dynamic AI-powered storytelling that adapts to player choices</li>
+            <li>Sophisticated memory management system that tracks character progression, world state, and narrative events</li>
+            <li>Constraint layer ensuring consistent RPG mechanics and game rules</li>
+            <li>Flexible combat system that adapts to tactical or narrative player preferences</li>
+            <li>Model selection UI allowing users to choose different language models based on their hardware capabilities</li>
+            <li>Seamless integration between Unity frontend and Python backend via Flask server</li>
+        </ul>
+        
+        <div class="system-diagram">
+            <h4 style="font-size: 1.2rem; margin-bottom: 1rem;">System Architecture</h4>
+            <p style="font-size: 0.9rem; font-style: italic; margin-top: 0.5rem;">The system uses a Unity frontend for user interaction while leveraging a Python backend for AI integration and model management.</p>
+        </div>
+        
+        <h3 style="margin-top: 2rem; font-size: 1.4rem; color: var(--ocean-deep);">Technical Implementation</h3>
+        <p>The project is built around several key components:</p>
+        
+        <div class="code-preview">
+// Game Manager - Core coordination between systems
+public IEnumerator GameLoop() {
+    while (true) {
+        // Wait for player input
+        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
+        string playerInput = uiManager.GetPlayerInput();
+        uiManager.ClearInput();
+
+        // Display player input
+        uiManager.DisplayOutput("Player: " + playerInput);
+
+        // Generate AI response
+        yield return aiManager.GenerateResponse(playerInput, (response) => {
+            uiManager.DisplayOutput("AI: " + response);
+            memoryManager.AddMemory(response, 3, new List&lt;string&gt; { "story" });
+        });
+
+        // Maintain memory system
+        memoryManager.PerformMemoryMaintenance();
+        uiManager.FocusInputField();
+    }
+}
+        </div>
+        
+        <p>The Memory Management system is a critical component that allows the AI to maintain context awareness across the game session:</p>
+        
+        <div class="code-preview">
+public class MemoryManager : MonoBehaviour {
+    private List&lt;MemoryItem&gt; memories = new List&lt;MemoryItem&gt;();
+
+    public void AddMemory(string content, int importance, List&lt;string&gt; categories) {
+        memories.Add(new MemoryItem {
+            content = content,
+            importance = importance,
+            categories = categories,
+            timestamp = DateTimeOffset.Now.ToUnixTimeSeconds()
+        });
+    }
+
+    public List&lt;string&gt; GetRelevantMemories(string context, int count) {
+        return memories
+            .OrderByDescending(m => m.importance * (1.0 / (DateTimeOffset.Now.ToUnixTimeSeconds() - m.timestamp)))
+            .Take(count)
+            .Select(m => m.content)
+            .ToList();
+    }
+}
+        </div>
+        
+        <h3 style="margin-top: 2rem; font-size: 1.4rem; color: var(--ocean-deep);">Development Journey</h3>
+        <div class="development-timeline">
+            <div class="timeline-item">
+                <div class="timeline-date">October 2023</div>
+                <div class="timeline-content">
+                    Initial concept development and research into AI integration with game systems
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">November 2023</div>
+                <div class="timeline-content">
+                    Development of Unity frontend and basic UI elements for text interaction
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">December 2023</div>
+                <div class="timeline-content">
+                    Implementation of Python backend with Flask server and initial model integration
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">January 2024</div>
+                <div class="timeline-content">
+                    Creation of Memory Management system for context retention and narrative consistency
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">February 2024</div>
+                <div class="timeline-content">
+                    Development of model selection UI and integration of multiple language models
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">March 2024</div>
+                <div class="timeline-content">
+                    Implementation of constraint system for game mechanics and RPG rules
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">April 2024</div>
+                <div class="timeline-content">
+                    Final integration and testing with comprehensive game systems
+                </div>
+            </div>
+        </div>
+        
+        <h3 style="margin-top: 2rem; font-size: 1.4rem; color: var(--ocean-deep);">Challenges & Solutions</h3>
+        <p>One of the most significant challenges was ensuring consistent RPG mechanics while allowing the AI creative freedom for storytelling. I developed a constraint layer that filters AI responses to ensure they conform to game rules while preserving narrative flexibility. The memory management system was also complex to implement effectively, requiring careful balancing of memory importance and recency to provide relevant context without overwhelming the AI model.</p>
+        
+        <h3 style="margin-top: 2rem; font-size: 1.4rem; color: var(--ocean-deep);">Future Development</h3>
+        <p>The project is planned to expand with the following features:</p>
+        <ul class="feature-list">
+            <li>Enhanced character progression system with skill trees and specialized abilities</li>
+            <li>Advanced narrative tracking for complex quests and story arcs</li>
+            <li>Multiplayer functionality allowing collaborative storytelling</li>
+            <li>Custom AI model fine-tuning for improved game-specific responses</li>
+            <li>Procedural world generation integrating with AI narrative capabilities</li>
+        </ul>
+    </div>
+    <div class="container artifact-container">
+        <h2 class="artifact-title">Intelligent Web Learning System</h2>
+        <img src="Images/Scraper.png" class="img-fluid" alt="Web Learning System Screenshot">
+        <div class="tech-stack">
+            <span class="tech-badge">Python</span>
+            <span class="tech-badge">SQLite</span>
+            <span class="tech-badge">NLP</span>
+            <span class="tech-badge">Machine Learning</span>
+            <span class="tech-badge">Knowledge Graphs</span>
+            <span class="tech-badge">Semantic Analysis</span>
+        </div>
+        <p>An advanced web crawling and knowledge extraction system that autonomously gathers and processes information from the web, creating an organized knowledge base with sophisticated learning capabilities. This project combines web scraping, natural language processing, and machine learning to create an AI system that can extract, organize, and learn from web content.</p>
+        
+        <h3 style="margin-top: 2rem; font-size: 1.4rem; color: var(--ocean-deep);">Key Features</h3>
+        <ul class="feature-list">
+            <li>Responsible web crawler with domain filtering, rate limiting, and robots.txt compliance</li>
+            <li>English language detection and content filtering</li>
+            <li>Advanced text processing with keyword extraction and summarization</li>
+            <li>Entity recognition and relationship extraction</li>
+            <li>Sophisticated semantic understanding using transformer-based embeddings</li>
+            <li>Hierarchical knowledge organization with concept clustering</li>
+            <li>Interactive user interface for crawling, processing, and querying knowledge</li>
+        </ul>
+        
+        <div class="system-diagram">
+            <h4 style="font-size: 1.2rem; margin-bottom: 1rem;">System Architecture</h4>
+            <p style="font-size: 0.9rem; font-style: italic; margin-top: 0.5rem;">The system consists of multiple interconnected components: a web crawler, text processor, learning model, and user interface, all working together to build an intelligent knowledge base.</p>
+        </div>
+        
+        <h3 style="margin-top: 2rem; font-size: 1.4rem; color: var(--ocean-deep);">Technical Implementation</h3>
+        <p>The project is built around several key components:</p>
+        
+        <div class="code-preview">
+    # ResponsibleWebCrawler - Core crawling engine
+    class ResponsibleWebCrawler:
+        def __init__(self, seed_urls, db_path='crawled_data.db', delay=1, allowed_domains=None):
+            self.seed_urls = seed_urls
+            self.visited_urls = set()
+            self.queue = list(seed_urls)
+            self.delay = delay
+            self.domain_last_accessed = {}
+            
+            # Set up domain filtering
+            self.allowed_domains = None
+            if allowed_domains:
+                self.allowed_domains = [domain.replace('www.', '') for domain in allowed_domains]
+            
+            # Set up database
+            self.db_path = db_path
+            self.conn = sqlite3.connect(db_path)
+            self.create_tables()
+        
+        def crawl(self, max_pages=100):
+            pages_crawled = 0
+            pages_stored = 0
+            
+            while self.queue and pages_stored < max_pages:
+                url = self.queue.pop(0)
+                
+                if self.normalize_url(url) not in self.visited_urls:
+                    source_id, links = self.crawl_page(url)
+                    
+                    if source_id:
+                        pages_stored += 1
+                        print(f"Successfully stored page {pages_stored}/{max_pages}: {url}")
+                        
+                        for link in links:
+                            if self.normalize_url(link) not in self.visited_urls:
+                                self.queue.append(link)
+                    
+                    pages_crawled += 1
+        </div>
+        
+        <p>The Text Processing component extracts meaningful information from the crawled content:</p>
+        
+        <div class="code-preview">
+    # TextProcessor - Information extraction
+    class TextProcessor:
+        def __init__(self, db_path='crawled_data.db', output_db='knowledge_base.db'):
+            self.input_conn = sqlite3.connect(db_path)
+            self.output_conn = sqlite3.connect(output_db)
+            self.setup_output_db()
+        
+        def process_page(self, page_id, url, title, content):
+            # Generate summary and keywords
+            summary = self.generate_summary(content)
+            keywords = self.extract_keywords(content)
+            
+            # Store document
+            doc_id = self.store_document(url, title, summary, keywords, 'en')
+            
+            # Extract and store sentences
+            sentences = self.extract_sentences(content)
+            sentence_ids = []
+            for sentence in sentences:
+                if len(sentence.split()) >= 3:  # Skip very short sentences
+                    sent_id = self.store_sentence(doc_id, sentence)
+                    sentence_ids.append(sent_id)
+            
+            # Extract entities and relationships
+            self.extract_and_store_knowledge(sentences, sentence_ids)
+        </div>
+        
+        <p>The advanced Learning Model builds semantic understanding and knowledge organization:</p>
+        
+        <div class="code-preview">
+    # Enhanced Learning Components
+    class EnhancedEntityExtractor:
+        """Enhanced entity recognition using spaCy NER"""
+        
+        def __init__(self, knowledge_db_path='knowledge_base.db'):
+            self.nlp = spacy.load("en_core_web_sm")
+            self.db_path = knowledge_db_path
+            self.entity_cache = {}
+            self.relationship_types = self._load_relationship_types()
+        
+        def extract_entities(self, text):
+            doc = self.nlp(text)
+            entities = []
+            
+            # Extract named entities
+            for ent in doc.ents:
+                entity_type = self._map_entity_type(ent.label_)
+                entities.append((ent.text, entity_type, ent.start_char, ent.end_char))
+            
+            return entities
+    
+    class SemanticProcessor:
+        """Advanced semantic understanding for text using transformer-based embeddings"""
+        
+        def __init__(self, knowledge_db_path='knowledge_base.db', model_dir='models'):
+            self.db_path = knowledge_db_path
+            self.model_dir = model_dir
+            self.sentence_model = SentenceTransformer('all-MiniLM-L6-v2')
+        
+        def semantic_search(self, query, top_k=5):
+            # Generate query embedding
+            query_embedding = self.sentence_model.encode(query)
+            
+            # Calculate similarity to all documents
+            similarities = cosine_similarity(
+                query_embedding.reshape(1, -1),
+                index['embeddings']
+            )[0]
+            
+            # Get top-k results
+            top_indices = similarities.argsort()[-top_k:][::-1]
+            
+            results = []
+            for i in top_indices:
+                doc_id = index['doc_ids'][i]
+                title = index['doc_titles'][i]
+                score = similarities[i]
+                results.append((doc_id, title, score))
+            
+            return results
+        </div>
+    
+        <h3 style="margin-top: 2rem; font-size: 1.4rem; color: var(--ocean-deep);">User Interface</h3>
+        <p>The system includes a comprehensive GUI built with Tkinter that allows users to:</p>
+        <ul class="feature-list">
+            <li>Configure and run web crawling jobs with domain filtering</li>
+            <li>Process the crawled data to build a knowledge base</li>
+            <li>Train AI models on the processed information</li>
+            <li>Query the knowledge base with semantic search capabilities</li>
+            <li>View detailed statistics about the system's operation</li>
+            <li>Access enhanced learning features for improved understanding</li>
+        </ul>
+        
+        <div style="margin: 2rem 0;">
+            <img src="Images/GUIShot.png" class="img-fluid" alt="Web Learning System UI Screenshot">
+            <p style="font-size: 0.9rem; font-style: italic; margin-top: 0.5rem;">The user interface provides intuitive access to all system components and visualizes the knowledge extraction process.</p>
+        </div>
+        
+        <h3 style="margin-top: 2rem; font-size: 1.4rem; color: var(--ocean-deep);">Knowledge Organization</h3>
+        <p>A key innovation in this project is the hierarchical organization of knowledge:</p>
+        <ul class="feature-list">
+            <li>Entity relationship graphs visualize connections between concepts</li>
+            <li>Hierarchical clustering organizes information into logical structures</li>
+            <li>Concept clusters group semantically similar content</li>
+            <li>Fact classification differentiates between types of information</li>
+            <li>Provenance tracking maintains information about knowledge sources</li>
+        </ul>
+        
+        <div style="margin: 2rem 0;">
+            <p style="font-size: 0.9rem; font-style: italic; margin-top: 0.5rem;">Knowledge graphs visualize the relationships between entities and concepts extracted from web content.</p>
+        </div>
+        
+        <h3 style="margin-top: 2rem; font-size: 1.4rem; color: var(--ocean-deep);">Challenges & Solutions</h3>
+        <p>Building this system involved overcoming several complex challenges:</p>
+        
+        <div class="timeline-item" style="margin-top: 1rem;">
+            <div class="timeline-date" style="color: var(--ocean-deep); font-weight: 600;">Challenge</div>
+            <div class="timeline-content">
+                <strong>Responsible Crawling:</strong> Building a crawler that respects robots.txt, rate limits, and target server capabilities without overwhelming resources.
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-date" style="color: var(--seafoam); font-weight: 600;">Solution</div>
+            <div class="timeline-content">
+                Implemented domain-specific delays, robots.txt parsing, and intelligent queue management to ensure ethical crawling practices.
+            </div>
+        </div>
+        
+        <div class="timeline-item" style="margin-top: 1rem;">
+            <div class="timeline-date" style="color: var(--ocean-deep); font-weight: 600;">Challenge</div>
+            <div class="timeline-content">
+                <strong>Effective Entity Recognition:</strong> Identifying entities and relationships in unstructured text without using heavyweight NLP libraries.
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-date" style="color: var(--seafoam); font-weight: 600;">Solution</div>
+            <div class="timeline-content">
+                Created a hybrid approach using lightweight pattern recognition combined with more sophisticated NLP when available, with graceful degradation.
+            </div>
+        </div>
+        
+        <div class="timeline-item" style="margin-top: 1rem;">
+            <div class="timeline-date" style="color: var(--ocean-deep); font-weight: 600;">Challenge</div>
+            <div class="timeline-content">
+                <strong>Memory and Performance:</strong> Processing large volumes of web content while maintaining reasonable memory usage and performance.
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-date" style="color: var(--seafoam); font-weight: 600;">Solution</div>
+            <div class="timeline-content">
+                Implemented batch processing, optimized database queries, thread-local storage, and selective persistence of embeddings and models.
+            </div>
+        </div>
+        
+        <h3 style="margin-top: 2rem; font-size: 1.4rem; color: var(--ocean-deep);">Future Development</h3>
+        <p>The project has a comprehensive roadmap for future improvements:</p>
+        <ul class="feature-list">
+            <li>Multi-hop reasoning for connecting facts across documents</li>
+            <li>Advanced linguistic capabilities including coreference resolution</li>
+            <li>Multilingual support for processing content in multiple languages</li>
+            <li>Fact verification and contradiction detection</li>
+            <li>Incremental learning to update knowledge without full reprocessing</li>
+            <li>Interactive knowledge visualization tools</li>
+        </ul>
+        
+        <h3 style="margin-top: 2rem; font-size: 1.4rem; color: var(--ocean-deep);">Technologies Used</h3>
+        <p>This project leverages a variety of technologies:</p>
+        <ul class="feature-list">
+            <li><strong>Core Processing:</strong> Python, SQLite, requests, Beautiful Soup</li>
+            <li><strong>Natural Language Processing:</strong> spaCy, langdetect, regex pattern matching</li>
+            <li><strong>Machine Learning:</strong> scikit-learn, sentence-transformers, numpy</li>
+            <li><strong>Knowledge Representation:</strong> NetworkX for graph algorithms, Matplotlib for visualization</li>
+            <li><strong>User Interface:</strong> Tkinter, ttk for modern styling</li>
+            <li><strong>Advanced Algorithms:</strong> UMAP for dimensionality reduction, DBSCAN and KMeans for clustering</li>
+        </ul>
+    </div>
+    <div class="container artifact-container">
+        <h2 class="artifact-title">Ridiculous Cipher Application</h2>
+        <img src="Images/RidicoulsCipher.png" class="img-fluid" alt="Ridiculous Cipher Screenshot">
+        <div class="tech-stack">
+            <span class="tech-badge">Python</span>
+            <span class="tech-badge">PyQt5</span>
+            <span class="tech-badge">Cryptography</span>
+            <span class="tech-badge">GUI Development</span>
+            <span class="tech-badge">Base64</span>
+            <span class="tech-badge">PyInstaller</span>
+        </div>
+        <p>An intentionally over-engineered encryption application designed to create comically complex ciphers with multiple layers of encryption. The project combines traditional cryptographic techniques with unconventional transformations to create a unique enciphering experience. Designed primarily for a tabletop RPG campaign to simulate a character descending into madness through increasingly corrupted journal entries.</p>
+        
+        <h3 style="margin-top: 2rem; font-size: 1.4rem; color: var(--ocean-deep);">Key Features</h3>
+        <ul class="feature-list">
+            <li>Adjustable complexity levels (1-10) that progressively add more encryption layers</li>
+            <li>Unique seed-based encryption ensuring consistent encryption/decryption across sessions</li>
+            <li>Multiple encryption techniques including Caesar shifts, substitution ciphers, and more</li>
+            <li>Playful "dance notation" that adds choreography instructions to uppercase letters</li>
+            <li>Emoji substitution for lowercase characters to create visually distinctive patterns</li>
+            <li>Character position swapping based on deterministic algorithms</li>
+            <li>Intuitive GUI interface with encoding/decoding tabs and user-friendly controls</li>
+            <li>Cross-platform standalone executable built with PyInstaller</li>
+        </ul>
+        
+        <div class="system-diagram">
+            <h4 style="font-size: 1.2rem; margin-bottom: 1rem;">Encryption Layers by Complexity Level</h4>
+            <p style="font-size: 0.9rem; font-style: italic; margin-top: 0.5rem;">The cipher progressively adds more encryption layers as the complexity level increases, creating increasingly complex (and potentially corrupted) output at higher levels.</p>
+        </div>
+        
+        <h3 style="margin-top: 2rem; font-size: 1.4rem; color: var(--ocean-deep);">Technical Implementation</h3>
+        <p>The project revolves around a core cipher class that handles all encryption and decryption processes:</p>
+        
+        <div class="code-preview">
+class ReliableRidiculousCipher:
+    """
+    A comically absurd cipher that works reliably at all complexity levels.
+    This version prioritizes reliability while maintaining the ridiculous nature.
+    """
+    
+    def __init__(self, complexity=5, seed=None):
+        self.complexity = min(max(complexity, 1), 10)
+        self.seed = seed if seed is not None else int(time.time())
+        random.seed(self.seed)
+        
+        # Generate various substitution tables
+        self.char_map = self._generate_char_map()
+        self.emoji_map = self._generate_emoji_map()
+        self.numeric_map = self._generate_numeric_map()
+        self.dance_moves = self._generate_dance_moves()
+        
+        # Create various wacky parameters
+        self.shifts = [random.randint(1, 25) for _ in range(10)]
+        self.swap_positions = self._generate_swaps(100)
+        </div>
+        
+        <p>The encoding process applies successive transformations based on the selected complexity level:</p>
+        
+        <div class="code-preview">
+def encode(self, plaintext):
+    """Encode the text using multiple layers of transformation."""
+    if not plaintext:
+        return ""
+    
+    # Apply encoding steps based on complexity
+    encoded = plaintext
+    steps_applied = []
+    
+    # Step 1: Simple Caesar shift
+    shift = (self.complexity * 3) % 26
+    encoded = self._caesar_shift(encoded, shift)
+    steps_applied.append("Caesar shift")
+    
+    # Step 2: Character substitution
+    encoded = self._apply_substitution(encoded)
+    steps_applied.append("Character substitution")
+    
+    # Step 3: Multiple position-based Caesar shifts
+    encoded = self._apply_multiple_caesar(encoded)
+    steps_applied.append("Position-based Caesar shifts")
+    
+    # Additional steps based on complexity level...
+    
+    # Format: RCV6_<complexity>_<seed>_<encoded>
+    encoded_prefix = f"RCV6_{self.complexity}_{self.seed}_"
+    final_encoded = encoded_prefix + encoded
+    
+    return final_encoded, json.dumps(full_format)
+        </div>
+        
+        <div style="margin: 2rem 0;">
+            <h4 style="font-size: 1.2rem; margin-bottom: 1rem;">GUI Implementation</h4>
+            <img src="Images/CipherGUI.png" class="img-fluid" alt="Ridiculous Cipher GUI Screenshot">
+            <p style="font-size: 0.9rem; font-style: italic; margin-top: 0.5rem;">The PyQt5-based interface provides tabs for encoding and decoding, with options to adjust complexity and set custom seeds.</p>
+        </div>
+        
+        <p>The application is built with a user-friendly interface that provides clear controls and feedback:</p>
+        
+        <div class="code-preview">
+class CipherGUI(QMainWindow):
+    """GUI Application for the Ridiculous Cipher"""
+    
+    def __init__(self):
+        super().__init__()
+        
+        self.setWindowTitle("Kevin's Ridiculous Cipher")
+        self.setGeometry(100, 100, 800, 600)
+        
+        # Initialize the cipher
+        self.cipher = ReliableRidiculousCipher()
+        
+        # Create the main widget and layout
+        self.central_widget = QWidget()
+        self.setCentralWidget(self.central_widget)
+        self.layout = QVBoxLayout(self.central_widget)
+        
+        # Create tabs
+        self.tabs = QTabWidget()
+        self.encode_tab = QWidget()
+        self.decode_tab = QWidget()
+        self.about_tab = QWidget()
+        
+        # Set up encode/decode functionality
+        self.setup_encode_tab()
+        self.setup_decode_tab()
+        self.setup_about_tab()
+        </div>
+        
+        <h3 style="margin-top: 2rem; font-size: 1.4rem; color: var(--ocean-deep);">Encryption Methods</h3>
+        <p>The cipher employs a variety of intentionally quirky encryption techniques:</p>
+        
+        <div class="timeline-item" style="margin-top: 1rem;">
+            <div class="timeline-date" style="color: var(--ocean-deep); font-weight: 600;">Caesar Shifts</div>
+            <div class="timeline-content">
+                Both fixed and position-based shifts that rotate letters through the alphabet by varying amounts
+            </div>
+        </div>
+        
+        <div class="timeline-item" style="margin-top: 1rem;">
+            <div class="timeline-date" style="color: var(--ocean-deep); font-weight: 600;">Character Substitution</div>
+            <div class="timeline-content">
+                Complete character mapping based on randomized but deterministic substitution tables
+            </div>
+        </div>
+        
+        <div class="timeline-item" style="margin-top: 1rem;">
+            <div class="timeline-date" style="color: var(--ocean-deep); font-weight: 600;">String Reversal</div>
+            <div class="timeline-content">
+                Complete inversion of the character sequence at higher complexity levels
+            </div>
+        </div>
+        
+        <div class="timeline-item" style="margin-top: 1rem;">
+            <div class="timeline-date" style="color: var(--ocean-deep); font-weight: 600;">Character Swapping</div>
+            <div class="timeline-content">
+                Precise character position swaps based on predetermined patterns
+            </div>
+        </div>
+        
+        <div class="timeline-item" style="margin-top: 1rem;">
+            <div class="timeline-date" style="color: var(--ocean-deep); font-weight: 600;">Dance Notation</div>
+            <div class="timeline-content">
+                Injecting choreography instructions after uppercase letters (e.g., "K[MOONWALK]")
+            </div>
+        </div>
+        
+        <div class="timeline-item" style="margin-top: 1rem;">
+            <div class="timeline-date" style="color: var(--ocean-deep); font-weight: 600;">Emoji Substitution</div>
+            <div class="timeline-content">
+                Replacing lowercase letters with ASCII emoji representations (e.g., ":-)") 
+            </div>
+        </div>
+        
+        <div class="timeline-item" style="margin-top: 1rem;">
+            <div class="timeline-date" style="color: var(--ocean-deep); font-weight: 600;">Numeric Encoding</div>
+            <div class="timeline-content">
+                Substituting letters with numeric codes at higher complexity levels
+            </div>
+        </div>
+        
+        <div class="timeline-item" style="margin-top: 1rem;">
+            <div class="timeline-date" style="color: var(--ocean-deep); font-weight: 600;">Base64 Encoding</div>
+            <div class="timeline-content">
+                Final layer wrapping all previous transformations in standard Base64 encoding
+            </div>
+        </div>
+        
+        <h3 style="margin-top: 2rem; font-size: 1.4rem; color: var(--ocean-deep);">Development Journey</h3>
+        <p>The development of this cipher evolved through several phases to achieve the perfect balance between absurdity and functionality:</p>
+        
+        <div class="timeline-item" style="margin-top: 1rem;">
+            <div class="timeline-date">Initial Concept</div>
+            <div class="timeline-content">
+                Started as a simple script to create interesting-looking encoded text for an RPG character's journal
+            </div>
+        </div>
+        
+        <div class="timeline-item">
+            <div class="timeline-date">Feature Expansion</div>
+            <div class="timeline-content">
+                Progressively added more encryption layers to increase the complexity and visual distinctiveness
+            </div>
+        </div>
+        
+        <div class="timeline-item">
+            <div class="timeline-date">Reliability Issues</div>
+            <div class="timeline-content">
+                Encountered challenges with consistently decoding highly complex ciphers, especially with special characters
+            </div>
+        </div>
+        
+        <div class="timeline-item">
+            <div class="timeline-date">Refinement</div>
+            <div class="timeline-content">
+                Balanced the system to allow occasional decoding "glitches" at high complexity levels, which actually enhanced the narrative experience
+            </div>
+        </div>
+        
+        <div class="timeline-item">
+            <div class="timeline-date">GUI Development</div>
+            <div class="timeline-content">
+                Created a user-friendly interface with PyQt5 to make the cipher accessible to non-technical users
+            </div>
+        </div>
+        
+        <div class="timeline-item">
+            <div class="timeline-date">Deployment</div>
+            <div class="timeline-content">
+                Packaged the application as a standalone executable using PyInstaller for easy distribution
+            </div>
+        </div>
+        
+        <h3 style="margin-top: 2rem; font-size: 1.4rem; color: var(--ocean-deep);">Challenges & Solutions</h3>
+        <p>Creating this intentionally complex but still functional cipher presented several interesting challenges:</p>
+        
+        <div class="timeline-item" style="margin-top: 1rem;">
+            <div class="timeline-date" style="color: var(--ocean-deep); font-weight: 600;">Challenge</div>
+            <div class="timeline-content">
+                <strong>Balancing Complexity and Reliability:</strong> Making a cipher that was deliberately over-engineered but still functional.
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-date" style="color: var(--seafoam); font-weight: 600;">Solution</div>
+            <div class="timeline-content">
+                Implemented a complexity scale that allowed users to choose how many encryption layers to apply, with higher levels introducing controlled chaos.
+            </div>
+        </div>
+        
+        <div class="timeline-item" style="margin-top: 1rem;">
+            <div class="timeline-date" style="color: var(--ocean-deep); font-weight: 600;">Challenge</div>
+            <div class="timeline-content">
+                <strong>Consistent Encryption/Decryption:</strong> Ensuring the same message could be consistently encoded and decoded across different sessions.
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-date" style="color: var(--seafoam); font-weight: 600;">Solution</div>
+            <div class="timeline-content">
+                Developed a seed-based system that embeds all necessary encryption parameters within the encoded message itself, making it self-contained.
+            </div>
+        </div>
+        
+        <div class="timeline-item" style="margin-top: 1rem;">
+            <div class="timeline-date" style="color: var(--ocean-deep); font-weight: 600;">Challenge</div>
+            <div class="timeline-content">
+                <strong>Handling Special Characters:</strong> Processing Unicode and special characters that often broke encryption patterns.
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-date" style="color: var(--seafoam); font-weight: 600;">Solution</div>
+            <div class="timeline-content">
+                Created robust fallback mechanisms for character handling while limiting transformations to the most reliable character sets.
+            </div>
+        </div>
+        
+        <div class="timeline-item" style="margin-top: 1rem;">
+            <div class="timeline-date" style="color: var(--ocean-deep); font-weight: 600;">Challenge</div>
+            <div class="timeline-content">
+                <strong>Cross-Platform Compatibility:</strong> Ensuring the application worked consistently across different operating systems.
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-date" style="color: var(--seafoam); font-weight: 600;">Solution</div>
+            <div class="timeline-content">
+                Used PyQt5 for the GUI and PyInstaller for packaging, with careful attention to platform-specific quirks and dependencies.
+            </div>
+        </div>
+        
+        <h3 style="margin-top: 2rem; font-size: 1.4rem; color: var(--ocean-deep);">In-Game Application</h3>
+        <p>The Ridiculous Cipher was developed specifically for use in a Dungeons & Dragons campaign, where it serves several narrative purposes:</p>
+        
+        <ul class="feature-list">
+            <li>Creating journal entries for a character gradually losing their grip on reality</li>
+            <li>The increasing complexity settings mirror the character's descent into madness</li>
+            <li>"Glitches" in decoding at higher complexity levels represent corrupted memories or thoughts</li>
+            <li>Players must decode the encrypted messages to uncover plot elements and character development</li>
+            <li>The dance notation aspect adds a surreal element that suggests the character's neurological deterioration</li>
+            <li>The dungeon master can control exactly how coherent or fragmented recovered memories appear</li>
+        </ul>
+        
+        <h3 style="margin-top: 2rem; font-size: 1.4rem; color: var(--ocean-deep);">Technologies Used</h3>
+        <ul class="feature-list">
+            <li><strong>Core Language:</strong> Python 3.10+</li>
+            <li><strong>GUI Framework:</strong> PyQt5 for cross-platform user interface</li>
+            <li><strong>Cryptographic Elements:</strong> Base64, substitution ciphers, Caesar shifts</li>
+            <li><strong>Regular Expressions:</strong> For pattern matching in dance notation and emoji processing</li>
+            <li><strong>Packaging:</strong> PyInstaller for creating standalone executables</li>
+            <li><strong>Random Number Generation:</strong> Seeded RNG for reproducible encryption patterns</li>
+        </ul>
+        
+        <h3 style="margin-top: 2rem; font-size: 1.4rem; color: var(--ocean-deep);">Conclusion</h3>
+        <p>The Ridiculous Cipher project demonstrates how technical skills can enhance creative storytelling in unexpected ways. By combining cryptography principles with deliberate over-engineering, this application creates a unique tool that serves both as a functional encryption system and as a narrative device for character development in role-playing games.</p>
+        
+        <p>The project showcases my ability to blend technical implementation with creative applications, addressing complex challenges while maintaining a playful approach to software development. The resulting standalone application is accessible to non-technical users while containing sophisticated encryption logic under the hood.</p>
     </div>
 
     <footer class="artifact-footer">
